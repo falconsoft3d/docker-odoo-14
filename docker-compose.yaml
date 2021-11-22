@@ -1,13 +1,14 @@
 version: '3'
 services:
   web:
+    platform: linux/x86_64
     container_name: ${WEB_HOST}
     image: ${WEB_IMAGE_NAME}:${WEB_IMAGE_TAG}
     build: ./
     depends_on:
       - db
     ports:
-      - "${WEB_PORT}:8069"
+      - "${WEB_PORT}:8014"
     volumes:
       - odoo-web-data:/var/lib/odoo
       - ./config:/etc/odoo
@@ -18,6 +19,7 @@ services:
     entrypoint: "/usr/bin/odoo -c /etc/odoo/odoo.conf"
     restart: always
   db:
+    platform: linux/x86_64
     container_name: ${DB_HOST}
     image: ${DB_IMAGE}:${DB_TAG}
     environment:
