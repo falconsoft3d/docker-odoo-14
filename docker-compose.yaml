@@ -8,7 +8,7 @@ services:
     depends_on:
       - db
     ports:
-      - "${WEB_PORT}:8014"
+      - "${WEB_PORT}:8069"
     volumes:
       - odoo-web-data:/var/lib/odoo
       - ./config:/etc/odoo
